@@ -60,7 +60,7 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_for_user(self):
         """Test that a token is created for the user"""
-        payload = {'email': 'test@test.com', 'passwod': 'password'}
+        payload = {'email': 'test@test.com', 'password': 'password'}
         create_user(**payload)
         res = self.client.post(TOKEN_URL, payload)
 
@@ -69,7 +69,7 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_invalid_credentials(self):
         """Test that token is not created if invalid credentials are given"""
-        payload = {'email': 'test@test.com', 'passwod': 'password'}
+        payload = {'email': 'test@test.com', 'password': 'password'}
         invalid_payload = {'email': 'test1@test.com', 'password': 'password'}
         create_user(**payload)
         res = self.client.post(TOKEN_URL, invalid_payload)
